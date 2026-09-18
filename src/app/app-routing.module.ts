@@ -5,18 +5,29 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'folder/Inbox',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'folder/:folder',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  }
+    loadChildren: () =>
+      import('./folder/folder.module').then((m) => m.FolderPageModule),
+  },
+  {
+    path: 'add-product',
+    loadChildren: () =>
+      import('./pages/add-product/add-product.module').then(
+        (m) => m.AddProductPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, bindToComponentInputs: true })
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      bindToComponentInputs: true,
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
